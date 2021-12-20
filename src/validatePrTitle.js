@@ -1,9 +1,6 @@
+const config = require('@commitlint/config-conventional');
 const lint = require('@commitlint/lint').default;
 const load = require('@commitlint/load').default;
-
-const config = {
-  extends: ['@commitlint/config-conventional']
-};
 
 module.exports = async function validatePrTitle(prTitle) {
   const opts = await load(config);
