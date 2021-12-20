@@ -1,8 +1,17 @@
 const lint = require('@commitlint/lint').default;
-const config = require('../commitlint.config.js');
+const load = require('@commitlint/load').default;
+
+const config = {
+  extends: ['@commitlint/config-conventional']
+};
 
 module.exports = async function validatePrTitle(prTitle) {
-  const result = await lint(prTitle, config.rules);
+  const opts = await load(config);
+  const result = await lint(
+    prTitle,
+    opts.rules,
+    opts.parserPreset ? {parserOpts: opts.parserPreset.parserOpts} : {}
+  );
 
   if (!result.valid) {
     const errorMessages = result.errors.map((error) => error.message);
