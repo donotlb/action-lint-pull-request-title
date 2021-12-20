@@ -24,9 +24,8 @@
   "dependencies": {
     "@actions/core": "^1.2.4",
     "@actions/github": "^1.1.0",
-    "@commitlint/lint": "^15.0.0",
-    "@commitlint/load": "^15.0.0",
-    "@commitlint/config-conventional": "^15.0.0"
+    "@commitlint/config-conventional": "^15.0.0",
+    "@commitlint/lint": "^15.0.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "5.0.1",
