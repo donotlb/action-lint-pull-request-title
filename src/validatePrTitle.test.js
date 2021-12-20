@@ -21,9 +21,17 @@ it('allows valid PR titles that use the default types', async () => {
 });
 
 it('throws for malformed PR titles', async () => {
-  const inputs = ['Fix bug', 'foo: Bar', 'fix: no scope', 'fix(scope): Wrong Casing'];
+  const inputs = ['Fix bug', 'foo: Bar', 'fix(scope): Wrong Casing'];
 
   for (let index = 0; index < inputs.length; index++) {
     await expect(validatePrTitle(inputs[index])).rejects.toThrow();
+  }
+});
+
+it('empty scope should be ok', async () => {
+  const inputs = ['fix: no scope'];
+
+  for (let index = 0; index < inputs.length; index++) {
+    await expect(validatePrTitle(inputs[index])).resolves.toBe(undefined);
   }
 });
